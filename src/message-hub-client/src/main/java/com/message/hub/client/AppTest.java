@@ -2,7 +2,7 @@ package com.message.hub.client;
 
 
 import com.message.hub.client.processer.ISubscribeProcesser;
-import com.message.hub.server.contract.WanderMessage;
+import com.message.hub.server.contract.HubMessage;
 
 import java.io.IOException;
 
@@ -15,6 +15,7 @@ public class AppTest {
 
         ClientManger client = ClientManger.instance();
         client.sub("test", "test", new suber());
+
 
         run(client);
     }
@@ -31,7 +32,7 @@ public class AppTest {
     public static class suber implements ISubscribeProcesser {
 
         @Override
-        public void action(WanderMessage msg) {
+        public void action(HubMessage msg) {
             System.out.println(msg.getMessage());
         }
 

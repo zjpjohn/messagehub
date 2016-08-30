@@ -3,7 +3,7 @@ package com.message.hub.server.contract;
 /**
  * Created by shi on 7/8/2016.
  */
-public class WanderMessage {
+public class HubMessage {
     private String bizName ;
     private String channel ;
     private Object message ;

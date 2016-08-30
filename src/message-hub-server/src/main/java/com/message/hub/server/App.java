@@ -1,10 +1,7 @@
 package com.message.hub.server;
 
-
-import com.message.hub.server.channel.RedisChannel;
-import com.message.hub.server.command.CommandProcesser;
 import com.message.hub.server.config.AppConfig;
-import com.message.hub.server.network.WanderServer;
+import com.message.hub.server.network.MessageHubServer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -31,15 +28,15 @@ public class App extends SpringBootServletInitializer {
 
     @Autowired
     AppConfig appConfig;
+
     @Autowired
-    RedisChannel redisChannel;
+    MessageHubServer messageHubServer;
+
 
     @Bean
     CommandLineRunner runner(){
         return args->{
-//            wanderServer.start();
-            CommandProcesser.injection(redisChannel);
-            WanderServer.start(appConfig.getPort());
+            messageHubServer.start(appConfig.getPort());
         };
     }
 }

@@ -5,5 +5,5 @@ package com.message.hub.server.contract;
  */
 public interface IPublish {
 
-    void pub(String queue, WanderMessage message);
+    void pub(String queue, HubMessage message);
 }

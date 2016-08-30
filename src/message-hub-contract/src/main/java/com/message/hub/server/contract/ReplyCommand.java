@@ -10,24 +10,24 @@ public class ReplyCommand extends BaseCommandContract {
 
     public ReplyCommand(String biz, String channel) {
         super.setCmdType(CommandType.reply);
-        this.getWanderMessage().setBizName(biz);
-        this.getWanderMessage().setChannel(channel);
+        this.getHubMessage().setBizName(biz);
+        this.getHubMessage().setChannel(channel);
     }
 
     public ReplyCommand(String biz, String channel, Object msg) {
         super.setCmdType(CommandType.reply);
-        this.getWanderMessage().setBizName(biz);
-        this.getWanderMessage().setChannel(channel);
-        this.getWanderMessage().setMessage(msg);
+        this.getHubMessage().setBizName(biz);
+        this.getHubMessage().setChannel(channel);
+        this.getHubMessage().setMessage(msg);
     }
 
-    private WanderMessage wanderMessage = new WanderMessage();
+    private HubMessage hubMessage = new HubMessage();
 
-    public WanderMessage getWanderMessage() {
-        return wanderMessage;
+    public HubMessage getHubMessage() {
+        return hubMessage;
     }
 
-    public void setWanderMessage(WanderMessage wanderMessage) {
-        this.wanderMessage = wanderMessage;
+    public void setHubMessage(HubMessage hubMessage) {
+        this.hubMessage = hubMessage;
     }
 }

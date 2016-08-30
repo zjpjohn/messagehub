@@ -64,7 +64,7 @@ public class WanderClient {
 
         channelFutureListener = f -> {
             if (f.isSuccess()) {
-                logger.info("重新连接成功");
+                logger.info("连接成功");
                 ClientManger.instance().reSub();
             } else {
                 logger.info("重新连接失败，3秒后重新连接");

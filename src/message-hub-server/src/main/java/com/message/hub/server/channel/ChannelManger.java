@@ -11,7 +11,8 @@ public class ChannelManger {
     @Autowired
     RedisChannel redisChannel;
 
-    public  IBaseChannel instance(){
+    public  IBaseChannel getChannel(){
         return redisChannel;
     }
+
 }

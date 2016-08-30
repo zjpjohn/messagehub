@@ -52,7 +52,9 @@ public class MessageProcesser {
         model.setChannel(channel);
         WanderClient.send(model);
         //维护一个订阅列表
-        addSubMap(bizName, channel, sub);
+//        addSubMap(bizName, channel, sub);
+
+        logger.info("sub" + bizName + "." + channel);
     }
 
     /**
@@ -65,7 +67,7 @@ public class MessageProcesser {
         if (cmd.getCmdType() == BaseCommandContract.CommandType.error) {
             throw new Exception(cmd.getError());
         } else {
-            replyMessage(cmd.getWanderMessage());
+            replyMessage(cmd.getHubMessage());
         }
     }
 
@@ -74,7 +76,7 @@ public class MessageProcesser {
      *
      * @param model
      */
-    private void replyMessage(WanderMessage model) {
+    private void replyMessage(HubMessage model) {
         //尝试获取msgid
         Object msgId = ((com.google.gson.internal.LinkedTreeMap) model.getMessage()).get("msgId");
         if (msgId != null) {
@@ -106,7 +108,7 @@ public class MessageProcesser {
      * @param msg
      * @return
      */
-    private static ISubscribeProcesser getSubscribeProcesser(WanderMessage msg) {
+    private static ISubscribeProcesser getSubscribeProcesser(HubMessage msg) {
         SuberModel suberModel = subMap.get(getKey(msg.getBizName(), msg.getChannel()));
         if (suberModel != null)
             return suberModel.subscribeProcesser;
@@ -120,22 +122,22 @@ public class MessageProcesser {
     public static void startJob() {
         //拉取消息
 
-        while (true) {
-            try {
-                Set<String> set = subMap.keySet();
-                if (!set.isEmpty()) {
-                    pull(set);
-                }
-                Thread.sleep(100);
-            } catch (Exception e) {
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e1) {
-
-                }
-                logger.error("job", e);
-            }
-        }
+//        while (true) {
+//            try {
+//                Set<String> set = subMap.keySet();
+//                if (!set.isEmpty()) {
+//                    pull(set);
+//                }
+//                Thread.sleep(100);
+//            } catch (Exception e) {
+//                try {
+//                    Thread.sleep(1000);
+//                } catch (InterruptedException e1) {
+//
+//                }
+//                logger.error("job", e);
+//            }
+//        }
     }
 
     /**

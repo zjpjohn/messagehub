@@ -51,6 +51,7 @@ public  class BaseCommandContract {
 
 
     public enum CommandType {
+        init,
         subscribe,
         unsubscribe,
         pull, put,

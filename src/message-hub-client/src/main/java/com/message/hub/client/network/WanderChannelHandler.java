@@ -29,6 +29,8 @@ public class WanderChannelHandler extends SimpleChannelInboundHandler<String> {
         if (executorService == null) {
             executorService = Executors.newFixedThreadPool(WanderClient.getWorkPool());
         }
+        System.out.println(s);
+//        logger.info("got msg :" +s);
         executorService.submit(() -> {
             try {
                 CommandProcesser.instance().process(s);

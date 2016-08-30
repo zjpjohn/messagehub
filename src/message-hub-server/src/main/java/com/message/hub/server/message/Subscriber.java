@@ -20,7 +20,7 @@ public class Subscriber implements ISubscribe {
 
     @Override
     public Object sub(String queue) {
-        return channelManger.instance().sub(queue);
+        return channelManger.getChannel().sub(queue);
     }
 
     @Override
